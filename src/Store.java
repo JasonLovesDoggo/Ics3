@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class Main {
+public class Store {
 
     // Scanner to get user input throughout the program
     private static final Scanner scanner = new Scanner(System.in);
@@ -38,7 +38,7 @@ public class Main {
 
         // Display the contents of the shopping cart, including item names, quantities, and individual prices
         System.out.println("Here is your cart:");
-        double total = 0;
+        float total = 0;
         for (String item : ShoppingCart.keySet()) {
             System.out.println(item + " - " + ShoppingCart.get(item) + " - at " + StoreItems.get(item) + "$ each");
 
@@ -47,13 +47,14 @@ public class Main {
         }
 
         // Calculate and display the tax (13%) rounded to 2 decimal places
-        double taxes = (Math.round(total * 0.13 * 100.0) / 100.0);
+        float taxes = (float) (Math.round(total * 0.13 * 100.0) / 100.0);
 
-        // Round the total cost to 2 decimal places
-        total = Math.round(total * 100.0) / 100.0;
-        System.out.println("Subtotal: $" + total);
+        // Round the subtotal and total cost to 2 decimal places
+        float subtotal = (float) (Math.round(total * 100.0) / 100.0);
+        float totalCost = (float) (Math.round((total + taxes) * 100.0) / 100.0);
+        System.out.println("Subtotal: $" + subtotal);
         System.out.println("Tax (13%): $" + taxes);
-        System.out.println("Total: $" + (total + taxes));
+        System.out.println("Total: $" + totalCost);
 
         // Thank the customer for their purchase
         System.out.println("Thank you for shopping at Jason's store");
@@ -85,7 +86,7 @@ public class Main {
         System.out.println("You have added " + ItemQuantity + " " + ItemName + " to your cart.");
 
         // Ask if the user wants to buy anything else
-        System.out.println("Would you like to purchase anything else? (Y/N)");
+        System.out.print("Would you like to purchase anything else? (Y/N): ");
         String response = scanner.next();
 
         // Recursively call the function if the user wants to continue shopping

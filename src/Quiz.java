@@ -3,7 +3,7 @@
    Purpose of program: To create a quiz program that asks the user a series of questions and provides feedback on their answers.
  */
 
-public class Summative {
+public class Quiz {
     // Constant for the total number of questions
     private static final int NUM_QUESTIONS = 6;
 
